@@ -12,7 +12,7 @@ int main()
 	
 	float jamKerja,
 		  totalGaji,
-		  totalLembur;
+		  totalLembur = 0;
 		  
 	cout << "Nama Pegawai: ";
 	cin >>  namaPegawai;
@@ -27,10 +27,11 @@ int main()
 	{
 		totalLembur = jamKerja - 7;
 		totalGaji	=  (gajiPerjam * 7) + (totalLembur * 1.5 * gajiPerjam);
-		cout << "Jumlah jam Lembur:" << totalLembur << "\n";
 	}
 	else totalGaji = gajiPerjam * jamKerja;
 	
+	
+	cout << "Jumlah jam Lembur:" << totalLembur << "\n";	
 	cout << "Total Gaji Harian Pegawai: " << totalGaji;
 	
 	return 0;
