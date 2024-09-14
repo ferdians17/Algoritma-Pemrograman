@@ -21,8 +21,8 @@ int main()
 	int
 		usiaPelanggan,
 		gajiPelanggan,
-		hargaKredit,
-		totalHarga,
+		hargaKredit = 0,
+		totalHarga = 0,
 		
 	//jumlah bulan dalam 10 tahun ( 12 bulan dikali 10 tahun
 		lamaKredit = 120;
