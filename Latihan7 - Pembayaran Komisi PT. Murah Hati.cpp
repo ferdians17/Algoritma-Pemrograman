@@ -83,7 +83,7 @@ int main ()
 	while( urut < 10)
 	{
 		cout << "| " << (urut+1);
-		spasiAngka(jarak[0], urut);
+		spasiAngka(jarak[0], urut+1);
 		cout << "|";
 		
 		cout << " " << sales[urut];
