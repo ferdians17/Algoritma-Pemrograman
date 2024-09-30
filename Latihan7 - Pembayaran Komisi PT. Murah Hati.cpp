@@ -1,33 +1,35 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-using namespace std;
 
-void spasiHuruf(int panjang = 0)
+using namespace std;
+struct Akhir
 {
-	string spc = "";
-	for (int i = 0; i < panjang; i++)
+	string huruf;
+	int angka;
+};
+
+void spasi(int jenis, int awal, Akhir akhir)
+{
+	int digit;
+	string spc;
+	
+	if (jenis == 0)
 	{
-		spc += " ";
+		if( akhir.angka < 10) digit = 1;
+		else if( akhir.angka < 100) digit = 2;
+		else if( akhir.angka < 1000) digit = 3;
+		else if( akhir.angka < 10000) digit = 4;
+		else if( akhir.angka < 100000) digit = 5;
+		else if( akhir.angka < 1000000) digit = 6;
+		else digit = 7;
+	}
+	else
+	{
+		digit = akhir.huruf.length() - 1;
 	}
 	
-	cout << spc;
-}
-
-void spasiAngka(int jumlah, int panjang = 0)
-{
-	string spc = "";
-	int digit;
-	
-	if( panjang < 10) digit = 1;
-	else if( panjang < 100) digit = 2;
-	else if( panjang < 1000) digit = 3;
-	else if( panjang < 10000) digit = 4;
-	else if( panjang < 100000) digit = 5;
-	else if( panjang < 1000000) digit = 6;
-	else digit = 7;
-	
-	digit = jumlah -  digit -1;
+	digit = awal -  digit - 1;
 	
 	for (int i = 0; i < digit; i++)
 	{
@@ -39,13 +41,14 @@ void spasiAngka(int jumlah, int panjang = 0)
 
 int main ()
 {
+	Akhir akhir;
 	string sales[10];
-	int urut = 0, penjualan[10];
+	int urut = 0, penjualan[10], panjang = 10;
 	float komisi1[10] = {0,0,0,0,0,0,0,0,0,0},
 		  komisi2[10] = {0,0,0,0,0,0,0,0,0,0},
 		  totalKomisi = 0;
 	
-	int jarak[2] =  { 13, 18 };
+	int jarak[3] =  { 13, 18, 74 };
 	
 	system("cls");
 	system("title PEMBAYARAN KOMISI - PT MURAH HATI");
@@ -55,7 +58,7 @@ int main ()
 	cout << "=============================\n" << endl;
 	cout << "Silahkan masukkan data" <<endl;
 	
-	while( urut < 10 )
+	while( urut < panjang )
 	{
 		cout << "Nama Sales ke-[" << (urut+1) << "]:"; cin >> sales[urut];
 		cout << "Jumlah Penjualan:"; cin >> penjualan[urut];
@@ -80,40 +83,49 @@ int main ()
 	cout << "| No.         | Nama Sales  | Jumlah Penjualan | Komisi 1    | Komisi 2    | Total Komisi     |\n";
 	cout << "+-------------+-------------+------------------+-------------+-------------+------------------+ \n";
 	
-	while( urut < 10)
+	while( urut < panjang)
 	{
 		cout << "| " << (urut+1);
-		spasiAngka(jarak[0], urut+1);
+		akhir.angka = (urut+1);
+		spasi(0, jarak[0], akhir );
 		cout << "|";
 		
-		cout << " " << sales[urut];
-		spasiHuruf(jarak[0] - sales[urut].length() - 1);
+		cout << "" << sales[urut];
+		akhir.huruf = sales[urut];
+		spasi(1, jarak[0], akhir);
 		cout << "|";
 		
 		cout << " " << penjualan[urut];
-		spasiAngka(jarak[1], penjualan[urut]);
+		akhir.angka = penjualan[urut];
+		spasi(0, jarak[1], akhir);
 		cout << "|";
 		
 		cout << " " << komisi1[urut];
-		spasiAngka(jarak[0], komisi1[urut]);
+		akhir.angka = komisi1[urut];
+		spasi(0, jarak[0], akhir);
 		cout << "|";
 		
 		cout << " " << komisi2[urut];
-		spasiAngka(jarak[0], komisi2[urut]);
+		akhir.angka = komisi2[urut];
+		spasi(0, jarak[0], akhir);
 		cout << "|";
 		
 		cout << " " << komisi1[urut] + komisi2[urut];
-		spasiAngka(jarak[1], komisi1[urut] + komisi2[urut]);
-		cout << "|"<< endl;
+		akhir.angka = komisi1[urut] + komisi2[urut];
+		spasi(0, jarak[1], akhir);
+		cout << "|" << endl;
 		
 		urut++;
 	}
 
 	cout << "+-------------+-------------+------------------+-------------+-------------+------------------+ \n";
-	cout << "| Total Komisi Dibayarkan PT. MURAH HATI = ";
-	spasiHuruf(32);
-	cout << "|";
-	spasiAngka(18, totalKomisi);
+	string kata = "| Total Komisi Dibayarkan PT. MURAH HATI = ";
+	cout << kata; //43
+	akhir.huruf = kata;
+	spasi(1, jarak[2], akhir);
+	cout << " |";
+	akhir.angka = totalKomisi;
+	spasi(0, jarak[1], akhir);
 	cout << totalKomisi;
 	cout << " |" << endl;
 	cout << "+-------------+-------------+------------------+-------------+-------------+------------------+ \n";
