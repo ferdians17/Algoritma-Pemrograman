@@ -10,6 +10,10 @@ int main()
 	int harga[99], jumlah[99], subTotal[99], total = 0, c = 0;
 	char aksi = 'y';
 	
+	cout << setprecision(15);
+	system("cls");
+	system("title DATA PENJUALAN");
+	
 	cout << "==============================\n";
 	cout << "----- PT. MAKMUR SENTOSA -----\n";
 	cout << "==============================\n";
