@@ -2,6 +2,7 @@
 #include <string>
 #include <cstring>
 #include <iomanip>
+#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -62,6 +63,8 @@ int main()
 		cout << setw(30) <<  "Nomor Pokok Mahasiswa (NPM)" << ":"; cin >> npm[i];
 		ulang:
 		cout << setw(30) <<  "Kode Jurusan" << ":"; cin >> kode[i];
+
+		transform(kode[i].begin(), kode[i].end(), kode[i].begin(), ::toupper);
 		
 		if(kode[i] == "SI")
 		{
@@ -116,15 +119,28 @@ int main()
 		}
 		
 		cout << setw(30) << "Uang Kuliah" << ":Rp." << uangKuliah[i] << endl;
-		cout << setw(30) << "Uang Kuliah Terbayar" << ":" << terbayar[i] << endl;
-		cout << setw(30) << "Sisa Uang Kuliah" << ":" << sisa[i] << endl;
+		cout << setw(30) << "Uang Kuliah Terbayar" << ":Rp." << terbayar[i] << endl;
+		cout << setw(30) << "Sisa Uang Kuliah" << ":Rp." << sisa[i] << endl;
 		
-		cout << "Masih ingin menghitung [Y/T] :"; cin >> entry;
+		cout << setw(30) << "Masih ingin menghitung [Y/T]" << ":"; cin >> entry;
 		
 		i++;
 	}
 	
 	cout << "============[ SELESAI ]============\n";
+		
+		cout << "+-----+-------------------------+---------------------+--------------------+--------------------+--------------------+\n";
+		cout << "|" << setw(5) << left << "No." << "|" << setw(25) << "Mahasiswa" << "|" << setw(21) << "Jurusan" << "|" << setw(20) << "Uang Kuliah" << "|";
+		cout << setw(20) << "Sudah Dibayar" << "|" << setw(20) << "Belum Dibayar" << "|\n";
+		cout << "+-----+-------------------------+---------------------+--------------------+--------------------+--------------------+\n";
+		
+	for(int g=0; g < i; g++)
+	{
+		cout << "|" << setw(5) << left << g+1 << "|" << setw(25) << nama[g] << "|" << setw(21) << jurusan[g] << "|" << setw(20) << uangKuliah[g] << "|";
+		cout << setw(20) << terbayar[g] << "|" << setw(20) << sisa[g] << "|\n";
+	}
+	
+		cout << "+-----+-------------------------+---------------------+--------------------+--------------------+--------------------+\n";
 	
 	return 0;
 }
