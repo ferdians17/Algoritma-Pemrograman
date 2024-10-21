@@ -7,24 +7,24 @@ using namespace std;
 
 void katalog()
 {
-	cout << "+-----+--------------------+--------------------+--------------------+--------------------+\n";
-	cout << "|" << setw(5) << left << "Kode" << "|" << setw(20) << "Jurusan" << "|" << setw(20) << "Pembayaran Awal" << "|";
+	cout << "+-----+---------------------+--------------------+--------------------+--------------------+\n";
+	cout << "|" << setw(5) << left << "Kode" << "|" << setw(21) << "Jurusan" << "|" << setw(20) << "Pembayaran Awal" << "|";
 	cout << setw(20) << "Jumlah Cicilan" << "|" << setw(20) << "Besar Cicilan" << "|\n";
-	cout << "+-----+--------------------+--------------------+--------------------+--------------------+\n";
+	cout << "+-----+---------------------+--------------------+--------------------+--------------------+\n";
 	
-	cout << "|" << setw(5) << "SI" << "|" << setw(20) << "Sistem Informasi" << "|" << setw(20) << "2.100.000" << "|";
+	cout << "|" << setw(5) << "SI" << "|" << setw(21) << "Sistem Informasi" << "|" << setw(20) << "2.100.000" << "|";
 	cout << setw(20) << "7" << "|" << setw(20) << "300.000" << "|\n";
 	
-	cout << "|" << setw(5) << "SI" << "|" << setw(20) << "Sistem Informasi" << "|" << setw(20) << "2.100.000" << "|";
+	cout << "|" << setw(5) << "TI" << "|" << setw(21) << "Teknik Informatika" << "|" << setw(20) << "2.500.000" << "|";
 	cout << setw(20) << "7" << "|" << setw(20) << "300.000" << "|\n";
 	
-	cout << "|" << setw(5) << "SI" << "|" << setw(20) << "Sistem Informasi" << "|" << setw(20) << "2.100.000" << "|";
-	cout << setw(20) << "7" << "|" << setw(20) << "300.000" << "|\n";
+	cout << "|" << setw(5) << "KA" << "|" << setw(21) << "Komputer Akuntansi" << "|" << setw(20) << "1.750.000" << "|";
+	cout << setw(20) << "6" << "|" << setw(20) << "200.000" << "|\n";
 	
-	cout << "|" << setw(5) << "SI" << "|" << setw(20) << "Sistem Informasi" << "|" << setw(20) << "2.100.000" << "|";
-	cout << setw(20) << "7" << "|" << setw(20) << "300.000" << "|\n";
+	cout << "|" << setw(5) << "MI" << "|" << setw(21) << "Manajemen Informatika" << "|" << setw(20) << "1.500.000" << "|";
+	cout << setw(20) << "6" << "|" << setw(20) << "250.000" << "|\n";
 	
-	cout << "+-----+--------------------+--------------------+--------------------+--------------------+\n";
+	cout << "+-----+---------------------+--------------------+--------------------+--------------------+\n";
 }
 
 int main()
@@ -60,6 +60,7 @@ int main()
 		cout << "============[ Data Mahasiswa ]============\n";
 		cout << setw(30) << "Nama Mahasiswa" << ":"; cin >> nama[i];
 		cout << setw(30) <<  "Nomor Pokok Mahasiswa (NPM)" << ":"; cin >> npm[i];
+		ulang:
 		cout << setw(30) <<  "Kode Jurusan" << ":"; cin >> kode[i];
 		
 		if(kode[i] == "SI")
@@ -69,7 +70,32 @@ int main()
 			cicilan[i] = 7;
 			besaran[i] = 300000;
 			uangKuliah[i] = awal[i] + (cicilan[i] * besaran[i]);
+		}		
+		else if(kode[i] == "TI")
+		{
+			jurusan[i] = "Teknik Informatika";
+			awal[i] = 2500000;
+			cicilan[i] = 7;
+			besaran[i] = 300000;
+			uangKuliah[i] = awal[i] + (cicilan[i] * besaran[i]);
+		}		
+		else if(kode[i] == "KA")
+		{
+			jurusan[i] = "Komputer Akuntansi";
+			awal[i] = 1750000;
+			cicilan[i] = 6;
+			besaran[i] = 200000;
+			uangKuliah[i] = awal[i] + (cicilan[i] * besaran[i]);
+		}		
+		else if(kode[i] == "MI")
+		{
+			jurusan[i] = "Manajemen Informatika";
+			awal[i] = 1500000;
+			cicilan[i] = 6;
+			besaran[i] = 250000;
+			uangKuliah[i] = awal[i] + (cicilan[i] * besaran[i]);
 		}
+		else goto ulang;
 		
 		cout << setw(30) << "Jurusan" << ":" << jurusan[i] << endl;
 		cout << setw(30) << "Pembayaran Awal" << ":Rp." << awal[i] << endl;
