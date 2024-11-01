@@ -20,9 +20,9 @@ struct mahasiswa
 	char npm[9];
 	char nama[20];
 	char nHuruf;
-	int nMid;
-	int nSem;
-	int nAkhir;
+	float nMid;
+	float nSem;
+	float nAkhir;
 } mhs[100];
 
 int main()
@@ -84,7 +84,7 @@ int main()
 	cout << "+===================================+\n";
 	
 	gotoxy(1,7); cout << "+-----+---------------+---------------+---------------+---------------+---------------+---------------+\n";
-	gotoxy(1,8); cout << "| No. | NPM           | NAMA LENGKAP  | NILAI MID     | NILAI SEMESTER| NILAI AKHIR   | NILAI HURUF   |\n";
+	gotoxy(1,8); cout << "| No. | NPM           | NAMA LENGKAP  | NILAI MID     | NILAI SEMESTER| NILAI AKHIR   | NILAI HURUF   | \n";
 	gotoxy(1,9); cout << "+-----+---------------+---------------+---------------+---------------+---------------+---------------+\n";
 	
 	for(i = 0; i < n; i++)
