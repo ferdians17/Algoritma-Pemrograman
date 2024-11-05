@@ -7,7 +7,7 @@
 Pertemuan 9
 	strcmp	=> compare / membandingkan nilai 2 buah string
 	strcpy	=> mengkopi string kedalam sebuah string
-	Long 	=>type data yang menampung sampai 1 triliun
+	Long 	=> type data yang menampung angka sampai 1 triliun
 */
 using namespace std;
 
