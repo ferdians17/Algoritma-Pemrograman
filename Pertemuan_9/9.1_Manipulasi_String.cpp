@@ -12,6 +12,7 @@ dimana ada:
 	string.substr(awal,akhir) digunakan untuk mengambil sebagian text dengan posisi yang telah ditentukan
 	string.find() digunakan untuk mencari posisi sebelum text yang dicari
 	string.replace(awal,akhir,perubahan) digunakan untuk merubah kata yang ada di dalam string
+ Jika tidak dapat menggunakan <string> dapat menambahkan .h menjadi <string.h> atau menggunakan library <cstring>.
 */
 using namespace std;
 
@@ -44,16 +45,16 @@ int main()
 	kosong.replace(0,5,"Hi"); // kata STMIK pada posisi 0-5 akan diubah menjadi Hi
 	cout << "Kata \"" << hasil << "\" akan diubah menjadi \"" << kosong << "\"\n";
 	
-//	char nama[20], alamat[35];
-//	
-//	cout << "Masukkan Nama Anda :";
-//	cin.getline(nama, sizeof(nama));
-//	
-//	cout << "Masukkan Alamat Anda :";
-//	cin.getline(alamat, sizeof(alamat));
-//	
-//	cout << "Nama Anda adalah : " << nama << endl;
-//	cout << "Alamat Anda adalah : " << alamat << endl;
+	char nama[20], alamat[35];
+	
+	cout << "Masukkan Nama Anda :";
+	cin.getline(nama, sizeof(nama));
+	
+	cout << "Masukkan Alamat Anda :";
+	cin.getline(alamat, sizeof(alamat));
+	
+	cout << "Nama Anda adalah : " << nama << endl;
+	cout << "Alamat Anda adalah : " << alamat << endl;
 
 	return 0;
 }
