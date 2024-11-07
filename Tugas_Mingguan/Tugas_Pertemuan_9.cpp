@@ -6,22 +6,17 @@ using namespace std;
 
 int main()
 {
-	string nama[100];
-		   char jurusan[100][50];
-		   char kode[100][50];
-	int	npm[100],
-		awal[100],
-		cicilan[100],
-		besaran[100],
-		uangKuliah[100],
-		bayar[100],
-		terbayar[100],
-		sisa[100],
-		i = 0;
+	struct lokal
+	{
+		string nama;
+		char jurusan[50],  kode[50];
+		int npm, awal, cicilan, besaran, uangKuliah, bayar, terbayar, sisa;
+	} lok[100];
+
+	int	i = 0;
 	char entry = 'y';
 		
 	cout << setprecision(10);
-	
 	system("cls");
 	system("title PEMBAYARAN UANG KULIAH");
 	
@@ -41,7 +36,7 @@ int main()
 	
 	cout << "|" << setw(5) << "MI" << "|" << setw(21) << "Manajemen Informatika" << "|" << setw(20) << "1.500.000" << "|";
 	cout << setw(20) << "6" << "|" << setw(20) << "250.000" << "|\n";
-	
+
 	cout << "+-----+---------------------+--------------------+--------------------+--------------------+\n";
 	cout << "======================================" << endl;
 	cout << "======[ PEMBAYARAN UANG KULIAH ]======" << endl;
@@ -55,98 +50,94 @@ int main()
 		cout << " Perhatikan!!!\n Gunakan gaya penulisan\n huruf besar semua atau kecil semua\n";
 		cout << "------------------------------------------\n";
 		
-		cout << setw(30) << "Nama Mahasiswa" << ":"; cin >> nama[i];
-		cout << setw(30) <<  "Nomor Pokok Mahasiswa (NPM)" << ":"; cin >> npm[i];
-
-		cout << setw(30) <<  "Kode Jurusan" << ":"; cin >> kode[i];
+		cout << setw(30) << "Nama Mahasiswa" << ":"; cin >> lok[i].nama;
+		cout << setw(30) <<  "Nomor Pokok Mahasiswa (NPM)" << ":"; cin >> lok[i].npm;
+		cout << setw(30) <<  "Kode Jurusan" << ":"; cin >> lok[i].kode;
 		
-		if( strcmp(kode[i], "SI") == 0 || strcmp(kode[i], "si") == 0)
+		if( strcmp(lok[i].kode, "SI") == 0 || strcmp(lok[i].kode, "si") == 0)
 		{
-			strcpy(jurusan[i], "Sistem Informasi");
-			awal[i] = 2100000;
-			cicilan[i] = 7;
-			besaran[i] = 300000;
-			uangKuliah[i] = awal[i] + (cicilan[i] * besaran[i]);
+			strcpy(lok[i].jurusan, "Sistem Informasi");
+			lok[i].awal = 2100000;
+			lok[i].cicilan = 7;
+			lok[i].besaran = 300000;
+			lok[i].uangKuliah = lok[i].awal + (lok[i].cicilan * lok[i].besaran);
 		}		
-		else if( strcmp(kode[i], "TI") == 0 || strcmp(kode[i], "ti") == 0)
+		else if( strcmp(lok[i].kode, "TI") == 0 || strcmp(lok[i].kode, "ti") == 0)
 		{
-			strcpy(jurusan[i], "Teknik Informatika");
-			awal[i] = 2500000;
-			cicilan[i] = 7;
-			besaran[i] = 300000;
-			uangKuliah[i] = awal[i] + (cicilan[i] * besaran[i]);
+			strcpy(lok[i].jurusan, "Teknik Informatika");
+			lok[i].awal = 2500000;
+			lok[i].cicilan = 7;
+			lok[i].besaran = 300000;
+			lok[i].uangKuliah = lok[i].awal + (lok[i].cicilan * lok[i].besaran);
 		}		
-		else if( strcmp(kode[i], "KA") == 0 || strcmp(kode[i], "ka") == 0)
+		else if( strcmp(lok[i].kode, "KA") == 0 || strcmp(lok[i].kode, "ka") == 0)
 		{
-			strcpy(jurusan[i], "Komputer Akuntansi");
-			awal[i] = 1750000;
-			cicilan[i] = 6;
-			besaran[i] = 200000;
-			uangKuliah[i] = awal[i] + (cicilan[i] * besaran[i]);
+			strcpy(lok[i].jurusan, "Komputer Akuntansi");
+			lok[i].awal = 1750000;
+			lok[i].cicilan = 6;
+			lok[i].besaran = 200000;
+			lok[i].uangKuliah = lok[i].awal + (lok[i].cicilan * lok[i].besaran);
 		}		
-		else if( strcmp(kode[i], "MI") == 0 || strcmp(kode[i], "mi") == 0)
+		else if( strcmp(lok[i].kode, "MI") == 0 || strcmp(lok[i].kode, "mi") == 0)
 		{
-			strcpy(jurusan[i], "Manajemen Informatika");
-			awal[i] = 1500000;
-			cicilan[i] = 6;
-			besaran[i] = 250000;
-			uangKuliah[i] = awal[i] + (cicilan[i] * besaran[i]);
+			strcpy(lok[i].jurusan, "Manajemen Informatika");
+			lok[i].awal = 1500000;
+			lok[i].cicilan = 6;
+			lok[i].besaran = 250000;
+			lok[i].uangKuliah = lok[i].awal + (lok[i].cicilan * lok[i].besaran);
 		}		
 		else
 		{
-			strcpy(jurusan[i], "Tidak Terdaftar");
-			awal[i] = 0;
-			cicilan[i] = 0;
-			besaran[i] = 0;
-			uangKuliah[i] = awal[i] + (cicilan[i] * besaran[i]);
+			strcpy(lok[i].jurusan, "Tidak Terdaftar");
+			lok[i].awal = 0;
+			lok[i].cicilan = 0;
+			lok[i].besaran = 0;
+			lok[i].uangKuliah = lok[i].awal + (lok[i].cicilan * lok[i].besaran);
 		}
 		
-		cout << setw(30) << "Jurusan" << ":" << jurusan[i] << endl;
-		cout << setw(30) << "Pembayaran Awal" << ":Rp." << awal[i] << endl;
-		cout << setw(30) << "Jumlah Cicilan" << ":" << cicilan[i] << endl;
-		cout << setw(30) << "Besar Cicilan" << ":Rp." << besaran[i] << endl;
+		cout << setw(30) << "Jurusan" << ":" << lok[i].jurusan << endl;
+		cout << setw(30) << "Pembayaran Awal" << ":Rp." << lok[i].awal << endl;
+		cout << setw(30) << "Jumlah Cicilan" << ":" << lok[i].cicilan << endl;
+		cout << setw(30) << "Besar Cicilan" << ":Rp." << lok[i].besaran << endl;
 		
-		if( strcmp(jurusan[i], "Tidak Terdaftar") == 0) bayar[i] == 0;
+		if( strcmp(lok[i].jurusan, "Tidak Terdaftar") == 0) lok[i].bayar == 0;
 		else
 		{
 			cout << setw(30) << "Pembayaran Ke-" << ":";
-			cin >> bayar[i];
+			cin >> lok[i].bayar;
 		}
 		
-		if(bayar[i] <= cicilan[i])
+		if(lok[i].bayar <= lok[i].cicilan)
 		{
-			terbayar[i] = awal[i] + (bayar[i] * besaran[i]);
-			sisa[i] = uangKuliah[i] - terbayar[i];
+			lok[i].terbayar = lok[i].awal + (lok[i].bayar * lok[i].besaran);
+			lok[i].sisa = lok[i].uangKuliah - lok[i].terbayar;
 		}
 		else
 		{
-			terbayar[i] = uangKuliah[i];
-			sisa[i] = 0;
+			lok[i].terbayar = lok[i].uangKuliah;
+			lok[i].sisa = 0;
 		}
 		
-		cout << setw(30) << "Uang Kuliah" << ":Rp." << uangKuliah[i] << endl;
-		cout << setw(30) << "Uang Kuliah Terbayar" << ":Rp." << terbayar[i] << endl;
-		cout << setw(30) << "Sisa Uang Kuliah" << ":Rp." << sisa[i] << endl;
-		
+		cout << setw(30) << "Uang Kuliah" << ":Rp." << lok[i].uangKuliah << endl;
+		cout << setw(30) << "Uang Kuliah Terbayar" << ":Rp." << lok[i].terbayar << endl;
+		cout << setw(30) << "Sisa Uang Kuliah" << ":Rp." << lok[i].sisa << endl;
 		cout << setw(30) << "Masih ingin menghitung [Y/T]" << ":"; cin >> entry;
-		
 		i++;
 	}
 	
-	cout << "============[ SELESAI ]============\n";
-		
-		cout << "+-----+-------------------------+---------------------+--------------------+--------------------+--------------------+\n";
-		cout << "|" << setw(5) << left << "No." << "|" << setw(25) << "Mahasiswa" << "|" << setw(21) << "Jurusan" << "|" << setw(20) << "Uang Kuliah" << "|";
-		cout << setw(20) << "Sudah Dibayar" << "|" << setw(20) << "Belum Dibayar" << "|\n";
-		cout << "+-----+-------------------------+---------------------+--------------------+--------------------+--------------------+\n";
+	cout << "============[ SELESAI ]============\n";	
+	cout << "+-----+----------+-------------------------+---------------------+--------------------+--------------------+--------------------+\n";
+	cout << "|" << setw(5) << left << "No." << "|" << setw(10) << "NPM" << "|" << setw(25) << "Mahasiswa" << "|" << setw(21) << "Jurusan" << "|" << setw(20) << "Uang Kuliah" << "|";
+	cout << setw(20) << "Sudah Dibayar" << "|" << setw(20) << "Belum Dibayar" << "|\n";
+	cout << "+-----+----------+-------------------------+---------------------+--------------------+--------------------+--------------------+\n";
 		
 	for(int g=0; g < i; g++)
 	{
-		cout << "|" << setw(5) << left << g+1 << "|" << setw(25) << nama[g] << "|" << setw(21) << jurusan[g] << "|" << setw(20) << uangKuliah[g] << "|";
-		cout << setw(20) << terbayar[g] << "|" << setw(20) << sisa[g] << "|\n";
+		cout << "|" << setw(5) << left << g+1 << "|" << setw(10) << lok[g].npm << "|" << setw(25) << lok[g].nama << "|" << setw(21) << lok[g].jurusan << "|" << setw(20) << lok[g].uangKuliah << "|";
+		cout << setw(20) << lok[g].terbayar << "|" << setw(20) << lok[g].sisa << "|\n";
 	}
 	
-		cout << "+-----+-------------------------+---------------------+--------------------+--------------------+--------------------+\n";
+	cout << "+-----+----------+-------------------------+---------------------+--------------------+--------------------+--------------------+\n";
 	
 	return 0;
 }
