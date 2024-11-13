@@ -29,8 +29,11 @@ int main()
         jam = 0;
 	string lanjut = "y";
 	
+	system("title Aplikasi Gaji Karyawan");
 	cout << setprecision(10);
-	
+	cout << "============================\n";
+	cout << "===[ PT. Rezeki Nomplok ]===\n";
+	cout << "============================\n\n";
 	do
 	{
 		cout << "=====[ Data Karyawan ]=====\n";
@@ -56,11 +59,12 @@ int main()
         {
             karyawan[hit].gajiPokok = gaji * 7;
             karyawan[hit].uangLembur = (1.5 * gaji) * (jam - 7);
-            if( jam  >= 8)
+            
+            if( jam  >= 8 && jam <= 10)
             {
                 karyawan[hit].uangMakan = 1500;
             }
-            else if( jam >= 10)
+            else if( jam > 10)
             {
                 karyawan[hit].uangMakan = 2500;
             }
