@@ -20,12 +20,17 @@ struct dataKaryawan
 		totalGaji;
 }karyawan[100];
 
+float
+	gajiPokok(int a),
+	uangLembur(int a),
+	uangMakan(int a),
+	uangJasa(int a);
+	
 void tampil(dataKaryawan karyawan[], int jumlah);
 
 int main()
 {
 	int hit = 0,
-        gaji = 2000,
         jam = 0;
 	string lanjut = "y";
 	
@@ -50,29 +55,10 @@ int main()
 		cin >> jam;
 
         karyawan[hit].jamKerja = jam;
-        karyawan[hit].gajiPokok = jam * gaji;
-        karyawan[hit].uangLembur = 0;
-        karyawan[hit].uangMakan = 0;
-        karyawan[hit].uangJasa = 0;
-
-        if( jam > 7)
-        {
-            karyawan[hit].gajiPokok = gaji * 7;
-            karyawan[hit].uangLembur = (1.5 * gaji) * (jam - 7);
-            
-            if( jam  >= 8 && jam <= 10)
-            {
-                karyawan[hit].uangMakan = 1500;
-            }
-            else if( jam > 10)
-            {
-                karyawan[hit].uangMakan = 2500;
-            }
-
-            if( jam >= 9) karyawan[hit].uangJasa = 3000;
-
-        }
-
+        karyawan[hit].gajiPokok = gajiPokok(jam);
+        karyawan[hit].uangLembur = uangLembur(jam);
+        karyawan[hit].uangMakan = uangMakan(jam);
+        karyawan[hit].uangJasa = uangJasa(jam);
         
         karyawan[hit].totalGaji = karyawan[hit].gajiPokok + karyawan[hit].uangLembur + karyawan[hit].uangMakan + karyawan[hit].uangJasa;
 		
@@ -91,6 +77,36 @@ int main()
 	return 0;
 }
 
+//deskripsi perhitungan gaji pokok
+float gajiPokok(int a)
+{
+	if(a > 7) return 7 * 2000;
+	else return a * 2000;
+}
+
+//deksripsi perhitungan uang lembur
+float uangLembur(int a)
+{
+	if( a > 7) return ( a - 7) * (2000 * 1.5);
+	else return 0;
+};
+
+//deskripsi perhitungan uang makan
+float uangMakan(int a)
+{
+	if( a >= 8 && a <= 10) return 1500;
+	else if( a > 10) return 2500;
+	else return 0;
+}
+
+//deskripsi perhitungan uang jasa
+float uangJasa(int a)
+{
+	if( a >= 9) return 3000;
+	else return 0;
+}
+
+//deskripsi tampilan table
 void tampil(dataKaryawan karyawan[], int jumlah)
 {
 	cout << "+----------+---------------+---------------+----------+---------------+---------------+---------------+---------------+---------------+\n";
@@ -107,6 +123,7 @@ void tampil(dataKaryawan karyawan[], int jumlah)
 
 	for(int x=0; x < jumlah; x++)
 	{
+		//hentikan perulangan jika data kosong
 		if(karyawan[x].nik == "") break;
 		cout << "|" << setw(10) << karyawan[x].nik << "|";
 		cout << setw(15) << karyawan[x].nama << "|";
