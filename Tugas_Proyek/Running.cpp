@@ -32,5 +32,5 @@ INT WINAPI WinMain(HINSTANCE hi, HINSTANCE hs, LPSTR pr, int cmd)
 		DispatchMessage(&pesan);
 	}
 	
-//	return 0;
+	return 0;
 }
